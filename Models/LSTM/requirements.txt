@@ -1,0 +1,10 @@
+twstock = 1.4.0
+pandas = 2.3.3
+pandas_ta = 0.4.71b0
+tqdm = 4.67.1
+yfinance = 0.2.66
+scikit-learn = 1.6.1
+numpy = 2.2.6
+torch = 2.9.1+cu130
+matplotlib = 3.10.0
+seaborn = 0.13.2
