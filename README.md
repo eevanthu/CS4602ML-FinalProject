@@ -91,6 +91,7 @@ pip install -r code/models/KNN/requirements.txt
 #4. Run the model
 cd code/models/KNN
 jupyter notebook
+```
 
 ### 📈 Performance Summary
 * Detailed results and evaluation metrics are updated per project milestone in the `CheckPoint` folder.
