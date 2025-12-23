@@ -110,11 +110,14 @@ git clone https://github.com/eevanthu/CS4602ML-FinalProject.git
 cd CS4602ML-FinalProject
 
 # 2. Setup a virtual environment (Python 3.9 recommended)
-conda create -n tsmc_project python=3.9 -y
+conda create -n tsmc_project python=3.12 pip -y
 conda activate tsmc_project
 
 # 3. Install dependencies
 # Option A: To reproduce the whole project at once (Recommended)
+# install torch
+pip install torch==2.9.1 torchvision==0.24.0 torchaudio==2.9.1 --index-url https://download.pytorch.org/whl/cu130
+# others
 pip install -r requirements.txt
 
 # Option B: To reproduce the KNN model specifically
