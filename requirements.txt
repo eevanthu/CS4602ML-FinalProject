@@ -14,7 +14,12 @@ twstock==1.4.0
 
 # Machine Learning Core (KNN, PCA, K-Means)
 scikit-learn==1.6.1
-torch==2.9.0+cu130
+
+# Torch Core (CUDA 13.0)
+--index-url https://download.pytorch.org/whl/cu130
+torch==2.9.0
+torchvision==0.24.0
+torchaudio==2.9.0
 
 # Visualization
 matplotlib==3.10.0
