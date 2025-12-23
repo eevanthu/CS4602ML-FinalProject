@@ -1,0 +1,16 @@
+# --- Data Processing ---
+pandas==2.2.3
+numpy==2.2.6
+pandas_ta==0.4.71b0
+tqdm==4.67.1
+
+# --- Financial Data ---
+yfinance==0.2.66
+twstock==1.4.0
+
+# --- Machine Learning & Tools ---
+scikit-learn==1.6.1
+matplotlib==3.10.0
+seaborn==0.13.2
+jupyter
+ipykernel
