@@ -5,7 +5,7 @@ This sub-module is responsible for constructing the **Cluster-Augmented K-Neares
 ## 🧠 Technical Architecture
 
 * **PCA Dimensionality Reduction**: Projects the 117-dimensional feature space onto 40 orthogonal principal components to mitigate the "Curse of Dimensionality" and filter out redundant market noise.
-* **K-Means Market Regime Identification**: Employs unsupervised learning to identify distinct market regimes. [cite_start]These cluster labels are used as auxiliary features to guide the KNN model in identifying historical "neighbors" within structurally similar market environments [cite: 322-323, 602].
+* **K-Means Market Regime Identification**: Employs unsupervised learning to identify distinct market regimes. These cluster labels are used as auxiliary features to guide the KNN model in identifying historical "neighbors" within structurally similar market environments.
 * **Temporal Alignment**: Implements a `shift(1)` operation on U.S. indices and ADR data to strictly prevent data leakage, ensuring the model only uses information available at the time of trade.
 
 ## 🛠️ Feature Engineering
