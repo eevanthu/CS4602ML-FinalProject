@@ -1,5 +1,4 @@
-
-1. Data Acquisition (`data_download.ipynb`)
+## 1. Data Acquisition (`data_download.ipynb`)
 
 **Goal**: Download historical trading data and calculate essential technical indicators.
 
