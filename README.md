@@ -59,7 +59,7 @@ The project follows a modular "data-first" architecture designed for high extens
 2.  **Core Preprocessing (`preprocess.ipynb`)**: Cleans raw data and generates the standardized `train.csv` (2010–2024) and `test.csv` (2025) files, which are stored in `data/processed/`.
 3.  **Model-Specific Engineering**: Base learners consume these core files and apply specialized processing. For instance, the **KNN model** expands the feature pool into a **117-dimensional** space using trend discretization and lag features to capture market momentum.
 4.  **Result Persistence (`results/`)**: Every base model exports its predicted "upward probabilities" into specific subdirectories (e.g., `results/KNN/KNN_prediction_all.csv`).
-5.  **Stacking Execution (`stacking.ipynb`)**: The script retrieves these persistent meta-features to train the meta-learner (XGBoost) for the final 2025 market direction forecast.
+5.  **Stacking Execution (`stacking.ipynb`)**: The script retrieves these persistent meta-features to train the meta-learner for the final 2025 market direction forecast.
 
 ## 🛠️ Execution Order
 
@@ -89,6 +89,7 @@ conda activate tsmc_project
 pip install -r code/models/KNN/requirements.txt
 
 #4. Run the model
+# Also to reproduce the KNN model specifically:
 cd code/models/KNN
 jupyter notebook
 ```
