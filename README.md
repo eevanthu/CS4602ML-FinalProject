@@ -64,12 +64,40 @@ The project follows a modular "data-first" architecture designed for high extens
 
 ## 🛠️ Execution Order
 
-1.  **Prepare Data**: Run `code/preprocess/preprocess.ipynb` to generate the processed CSV files.
-2.  **Generate Meta-features**: Execute individual base learner notebooks in `code/models/` to populate the `results/` folder.
-3.  **Perform Stacking**: Run `code/stack/stacking.ipynb` to synthesize predictions.
-4.  **Backtest**: Run `code/backtest/backtest6.py` to evaluate financial performance.
+### 1. Data Acquisition
+**Notebook:** `code/preprocess/data_download.ipynb`
+* **Description:** Downloads historical trading data for TSMC using the `twstock` API. It also fetches global market indicators (e.g., DJI, ADR) using the `yfinance` API.
+* **Output:** Generates the raw dataset `2330.csv`, `DJI.csv`, `ADR.csv`, `NASDAQ.csv`, `SOX.csv`, `SPX.csv`, `DJI.csv`
+
+### 2. Data Preprocessing
+**Notebook:** `code/preprocess/preprocess.ipynb`
+* **Description:** Handles missing values, performs feature engineering (calculating RSI, MACD, Bollinger Bands), and aligns time-series data.
+* **Data Split:**
+    * **Training Set:** 2021–2024
+    * **Testing Set:** 2025
+* **Output:** Saves the cleaned datasets for model training (e.g., `train.csv`, `test.csv`).
+
+### 3. Base Model Training 
+Train the individual base learners to generate initial prediction probabilities. You can run these notebooks in any order.
+
+* **KNN:** `code/models/KNN` - Implements K-Nearest Neighbors with dynamic time warping or Euclidean distance.
+* **LSTM:** `code/models/LSTM` - Trains a Long Short-Term Memory network with a sliding window approach.
+* **XGBoost:** `code/models/XGBOOST` - Trains a Gradient Boosting decision tree model.
+* **Nerual Network:** `code/models/NN` - Trains a MLP with non-linear activation functions to learn high-level abstract representations of the input features.
+* **NaiveBayes:** `code/models/NaiveBayes` - estimate the conditional probability of market directions based on feature distributions.
+* **RandomForest:** `code/models/RandomForest` - Provides robust ensemble learning through bagging, effectively reducing overfitting by averaging multiple decision trees.
+* **Output:** Each notebook saves its probability predictions into a CSV file 
+
+### 4. Stacking Ensemble
+**Notebook:** `code/stack/stacking.ipynb`
+* **Description:** Aggregates the probability outputs from the three base models. It trains a Meta-Learner (XGBoost) to assign dynamic weights to each base model and generates the final prediction.
+* **Output:**
+    * Final performance metrics (Accuracy, F1-score).
+    * Feature Importance plot.
+    * `prediction_analysis_summary.png` and prediction result files.
 
 ---
+
 
 ## 🛠️ Getting Started
 
