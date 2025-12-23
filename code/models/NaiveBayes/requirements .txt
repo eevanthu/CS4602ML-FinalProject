@@ -1,0 +1,12 @@
+# Notebook Environment
+jupyter
+ipykernel
+
+# Data Processing
+pandas
+numpy
+csv 
+os 
+
+# Machine Learning Core (SelectKBest, GaussianNB)
+scikit-learn
