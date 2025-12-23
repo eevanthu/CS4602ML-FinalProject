@@ -7,6 +7,7 @@ tqdm==4.67.1
 # --- Financial Data ---
 yfinance==0.2.66
 twstock==1.4.0
+lxml
 
 # --- Machine Learning & Tools ---
 scikit-learn==1.6.1
