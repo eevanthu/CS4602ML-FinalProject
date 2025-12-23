@@ -52,7 +52,7 @@ The model outputs a CSV file containing the following columns, designed to facil
 * **Actual_Movement**: The ground truth label (Target), where `1` indicates a price increase and `0` indicates a decrease.
 * **Prob_Rise**: The raw predicted probability of an "Upward" movement (Float range: `0.0` to `1.0`).
 * **Predicted_Class**: The initial binary classification based on a standard 0.5 threshold (`1` if Prob_Rise > 0.5, else `0`).
-* **Confidence**: A metric representing the strength of the prediction signal, calculated as $| \text{Prob\_Rise} - 0.5 | \times 2$.
+* **Confidence**: A metric representing the strength of the prediction signal, calculated as | Prob_Rise - 0.5 | * 2.
 * **Filtered_Prediction**: The final actionable signal after applying the confidence threshold:
 * `1`: High-confidence **Up** signal.
 * `0`: High-confidence **Down** signal.
