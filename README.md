@@ -7,13 +7,11 @@ This project implements a robust machine learning pipeline to predict the price 
 
 ## 🚪 Quick Navigation (傳送門)
 
-| Resource | Description | Link |
-| :--- | :--- | :--- |
-| **🌐 Website Gallery** | Curated financial data sources & research sites | [🔗 View Sites](./website.md) |
-| **📁 Data Repository** | Raw and processed datasets for 2330 forecasting | [🔗 Explore Data](./data/) |
-| **📍 CheckPoints** | Project milestones and phase-wise reports | [🔗 CheckPoints](./checkpoint/) |
-| **📊 Result Hub** | Exported prediction probabilities (Meta-features) | [🔗 View Results](./results/) |
-
+| Title    | Description |
+|  ----  | ----  |
+| [🔗 website](./website.md)  | 好的網站 |
+| [📁 Data](./data/)  | 模型資料之類檔案夾 |
+| [✅ CheckPoint](./checkpoint/) | Check Point |
 ---
 
 ## 🗂️ Project Structure
