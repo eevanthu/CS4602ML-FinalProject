@@ -47,9 +47,10 @@ The repository is organized into four core functional domains:
 ├── data/
 │   ├── processed/           # Cleaned features (train.csv, test.csv)
 │   └── raw/                 # Source data (2330, ADR, DJI, SOX, etc.)
-└── results/                 # Exported prediction probabilities (Meta-features)
-    ├── KNN/                 # KNN_prediction_all.csv, etc.
-    └── LSTM/                # LSTM_prediction_2025.csv, etc.       
+├── results/                 # Exported prediction probabilities (Meta-features)
+|    ├── KNN/                 # KNN_prediction_all.csv, etc.
+|    └── LSTM/                # LSTM_prediction_2025.csv, etc.
+└── requirements.txt
 ```
 ## 📂 Data Pipeline & Workflow
 
