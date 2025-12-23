@@ -14,7 +14,7 @@ twstock==1.4.0
 
 # Machine Learning Core (KNN, PCA, K-Means)
 scikit-learn==1.6.1
-torch==2.9.1+cu130
+torch==2.9.0+cu130
 
 # Visualization
 matplotlib==3.10.0
