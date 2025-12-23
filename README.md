@@ -84,14 +84,6 @@ cd CS4602ML-FinalProject
 conda create -n tsmc_project python=3.9 -y
 conda activate tsmc_project
 
-# 1. Clone the repository
-git clone https://github.com/eevanthu/CS4602ML-FinalProject.git
-cd CS4602ML-FinalProject
-
-# 2. Setup a virtual environment (Python 3.9 recommended)
-conda create -n tsmc_project python=3.9 -y
-conda activate tsmc_project
-
 # 3. Install dependencies
 # Option A: To reproduce the whole project at once (Recommended)
 pip install -r requirements.txt
@@ -100,6 +92,7 @@ pip install -r requirements.txt
 pip install -r code/models/KNN/requirements.txt
 ```
 ## Run the model
+To reproduce the KNN model specifically, follow these steps:
 ```
 # Navigate to the KNN module directory
 cd code/models/KNN
@@ -107,6 +100,12 @@ cd code/models/KNN
 # Launch Jupyter Notebook
 jupyter notebook
 ```
+To run thee whole project:
+```
+# Launch Jupyter Notebook
+jupyter notebook
+```
+
 
 ### 📈 Performance Summary
 * Detailed results and evaluation metrics are updated per project milestone in the `CheckPoint` folder.
