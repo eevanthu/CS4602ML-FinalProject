@@ -1,17 +1,25 @@
-# --- Data Processing ---
-pandas==2.3.3
-numpy==2.2.6
-pandas_ta==0.4.71b0
-tqdm==4.67.1
-
-# --- Financial Data ---
+# Data Collection
 yfinance==0.2.66
 twstock==1.4.0
 lxml
 
-# --- Machine Learning & Tools ---
+# Data Processing & Math
+pandas==2.3.3
+numpy==2.2.6
+scipy==1.13.1
+pandas_ta==0.4.71b0
+
+# Machine Learning & Deep Learning
 scikit-learn==1.6.1
+xgboost==3.1.0
+torch==2.9.1+cu130
+torchsummary==1.5.1
+
+# Visualization
 matplotlib==3.10.0
 seaborn==0.13.2
+
+# Utilities
+tqdm==4.67.1
 jupyter
 ipykernel
