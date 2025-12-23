@@ -1,49 +1,44 @@
-# CS4602ML-FinalProject
-# 📈 TSMC (2330) Stock Movement Prediction & Stacking Ensemble Project
+# CS4602ML-FinalProject: TSMC (2330) Stock Movement Prediction
+# 📈 Stacking Ensemble Architecture for Financial Forecasting
 
-This project implements a robust machine learning pipeline to predict the price movement (Up/Down) of TSMC (2330). It leverages a multi-model **Stacking Ensemble** approach, combining distance-based algorithms, tree-based models, and deep learning architectures.
+This project implements a robust machine learning pipeline to predict the price movement (Up/Down) of TSMC (2330). By leveraging a multi-model **Stacking Ensemble** approach, we combine the strengths of distance-based algorithms, tree-based models, and deep learning architectures to capture complex market dynamics.
+
+---
+
+## 🚪 Quick Navigation (傳送門)
+
+| Resource | Description | Link |
+| :--- | :--- | :--- |
+| **🌐 Website Gallery** | Curated financial data sources & research sites | [🔗 View Sites](./website.md) |
+| **📁 Data Repository** | Raw and processed datasets for 2330 forecasting | [🔗 Explore Data](./data/) |
+| **📍 CheckPoints** | Project milestones and phase-wise reports | [🔗 CheckPoints](./checkpoint/) |
+| **📊 Result Hub** | Exported prediction probabilities (Meta-features) | [🔗 View Results](./results/) |
+
+---
 
 ## 🗂️ Project Structure
 
-The repository is organized into four main directories: data management, model implementation, stacking ensemble logic, and result analysis.
+The repository is organized into four core functional domains:
 
 ```text
 .
 ├── code/
-│   ├── backtest/            # Trading strategy & performance evaluation
-│   │   ├── backtest6.py
-│   │   ├── README.md
-│   │   └── requirements.txt
-│   ├── models/              # Individual base learners
-│   │   ├── KNN/             # K-Nearest Neighbors (K-Sweep & Cluster-Augmented)
-│   │   ├── LSTM/            # Long Short-Term Memory (Deep Learning)
+│   ├── backtest/            # Trading strategy & financial performance evaluation
+│   │   ├── backtest6.py     # Core backtesting engine
+│   │   └── README.md        # Performance metrics (Sharpe, MDD, Returns)
+│   ├── models/              # Base Learners (The Model Zoo)
+│   │   ├── KNN/             # K-Nearest Neighbors (Cluster-Augmented)
+│   │   ├── LSTM/            # Long Short-Term Memory (Temporal Dependency)
 │   │   ├── RandomForest/    # Ensemble Tree-based model
 │   │   ├── XGBoost/         # Gradient Boosting Machine
-│   │   ├── NN/              # Multi-layer Perceptron / Neural Network
-│   │   ├── NaiveBayes/      # Probabilistic Classifier
-│   │   └── (Each model contains its own README.md & requirements.txt)
-│   ├── preprocess/          # Data cleaning & feature engineering pipeline
+│   │   ├── NN/              # Multi-layer Perceptron (MLP)
+│   │   └── NaiveBayes/      # Statistical baseline
+│   ├── preprocess/          # ETL & Feature Engineering pipeline
 │   │   ├── data_download.ipynb
-│   │   ├── preprocess.ipynb
-│   │   ├── README.md
-│   │   └── requirements.txt
-│   └── stack/               # Meta-learner for final ensemble prediction
-│       ├── stacking.ipynb
-│       ├── README.md
-│       └── requirements.txt
+│   │   └── preprocess.ipynb # Multi-dimensional indicator generation
+│   └── stack/               # Meta-learner for final ensemble aggregation
+│       └── stacking.ipynb   # Meta-feature fusion & final prediction
 ├── data/
-│   ├── processed/           # Cleaned features (train.csv, test.csv)
-│   └── raw/                 # Source data (2330, ADR, DJI, SOX, etc.)
-└── results/                 # Exported prediction probabilities (Meta-features)
-    ├── KNN/                 # KNN_prediction_all.csv, etc.
-    └── LSTM/                # LSTM_prediction_2025.csv, etc.
-
-
-
-## 傳送門 🚪
-
-| Title    | Description |
-|  ----  | ----  |
-| [🔗 網站整理](./website.md)  | 好的網站 |
-| [📁 Data](./data/)  | 模型資料之類檔案夾 |
-| [✅ CheckPoint](./checkpoint/) | Check Point |
+│   ├── processed/           # Standardized features (Post-ETL)
+│   └── raw/                 # Source signals (2330, ADR, Global Indices)
+└── results/                 # Probabilistic Meta-features for Stacking
