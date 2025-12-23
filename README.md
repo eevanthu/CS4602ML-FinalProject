@@ -49,7 +49,9 @@ The repository is organized into four core functional domains:
 │   └── raw/                 # Source data (2330, ADR, DJI, SOX, etc.)
 ├── results/                 # Exported prediction probabilities (Meta-features)
 |    ├── KNN/                 # KNN_prediction_all.csv, etc.
-|    └── LSTM/                # LSTM_prediction_2025.csv, etc.
+|    ├── LSTM/                # LSTM_prediction_2025.csv, etc.
+|    ├── Naive Bayes/         # NaiveBayes_prediction.csv, etc.
+|    └── XGBoost/             # XGBoost_prediction_2020-25.csv, etc.
 └── requirements.txt
 ```
 ## 📂 Data Pipeline & Workflow
