@@ -61,28 +61,6 @@ The project follows a modular "data-first" architecture designed for high extens
 4.  **Result Persistence (`results/`)**: Every base model exports its predicted "upward probabilities" into specific subdirectories (e.g., `results/KNN/KNN_prediction_all.csv`).
 5.  **Stacking Execution (`stacking.ipynb`)**: The script retrieves these persistent meta-features to train the meta-learner (XGBoost) for the final 2025 market direction forecast.
 
----
-
-## 🚀 Key Technical Features
-
-### 1. Advanced Preprocessing Principles
-* **Temporal Alignment**: Corrects for U.S./Taiwan market time zone differences (Shift-1) to ensure **Zero Data Leakage**, preventing the model from "reading the answer" from same-day U.S. closes.
-* **Logical Imputation**: Employs a `fill_na_safely` strategy where binary signals are treated as "no event" (0) and historical lags as "data absence" (-1) to maintain physical data integrity.
-* **Relative Scaling**: Shifts from absolute price values to relative percentage changes to ensure models generalize to high-price environments not seen in historical training data.
-
-### 2. Heterogeneous Base Learners (The "Zoo")
-* **Spatial & Regime-Aware (KNN)**: Uses PCA for dimensionality reduction and K-Means clustering to identify "Market Regimes," allowing the model to search for neighbors within structurally similar historical segments.
-* **Temporal & Sequential (LSTM/NN)**: Employs sliding windows (30–32 days) to capture long-term temporal dependencies and price inertia.
-* **Tree-Based Interactions (XGBoost/Random Forest)**: Models complex non-linear feature interactions while using bagging and shallow depths to mitigate overfitting.
-* **Probabilistic Baseline (Naive Bayes)**: Calculates conditional probabilities based on feature distributions to provide an efficient probabilistic baseline.
-
-### 3. Stacking & Backtesting Strategy
-* **Rolling Forecast Configuration**: Base learners generate predictions for the 2020–2024 period, which serve as the out-of-sample training input for the meta-learner.
-* **Meta-Learner Fusion**: A shallow XGBoost classifier (max_depth 1–3) acts as the meta-learner, learning the optimal weighting for each base model to achieve higher accuracy than any single base learner.
-* **Confidence-Based Trading**: The backtesting engine utilizes a "linear ratio" strategy, scaling the number of lots traded (up to 10) based on the model’s confidence score.
-
----
-
 ## 🛠️ Execution Order
 
 1.  **Prepare Data**: Run `code/preprocess/preprocess.ipynb` to generate the processed CSV files.
