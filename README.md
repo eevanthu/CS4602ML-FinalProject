@@ -77,12 +77,20 @@ Each module is designed with self-contained dependencies. It is recommended to u
 
 ```bash
 # 1. Clone the repository
-git clone [https://github.com/your-repo/CS4602ML-FinalProject.git](https://github.com/your-repo/CS4602ML-FinalProject.git)
+git clone https://github.com/eevanthu/CS4602ML-FinalProject.git
+cd CS4602ML-FinalProject
 
-# 2. Setup environment for a specific module (e.g., KNN)
+# 2. Setup a virtual environment (Python 3.9 recommended)
+conda create -n tsmc_project python=3.9 -y
+conda activate tsmc_project
+
+# 3. Install core dependencies
+# To reproduce the KNN model specifically:
+pip install -r code/models/KNN/requirements.txt
+
+#4. Run the model
 cd code/models/KNN
-pip install -r requirements.txt
-```
+jupyter notebook
 
 ### 📈 Performance Summary
 * Detailed results and evaluation metrics are updated per project milestone in the `CheckPoint` folder.
