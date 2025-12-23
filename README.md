@@ -92,16 +92,16 @@ pip install -r requirements.txt
 pip install -r code/models/KNN/requirements.txt
 ```
 ## Run the model
+To run the whole project:
+```
+# Launch Jupyter Notebook
+jupyter notebook
+```
 To reproduce the KNN model specifically, follow these steps:
 ```
 # Navigate to the KNN module directory
 cd code/models/KNN
 
-# Launch Jupyter Notebook
-jupyter notebook
-```
-To run thee whole project:
-```
 # Launch Jupyter Notebook
 jupyter notebook
 ```
