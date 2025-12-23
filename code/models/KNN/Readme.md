@@ -1,41 +1,41 @@
 # TSMC Stock Prediction: Cluster-Augmented KNN Module
 
-本子專案負責建構 **Cluster-Augmented KNN (分群增強型 K-近鄰演算法)**，作為整體 Stacking Ensemble 架構中的基底學習器 (Base Learner)。
+This sub-module is responsible for constructing the **Cluster-Augmented K-Nearest Neighbors (KNN)** model, serving as a primary base learner within the overall Stacking Ensemble architecture.
 
-## 🧠 核心技術架構 (Technical Architecture)
+## 🧠 Technical Architecture
 
-1. **PCA 降維**: 將 117 維特徵投影至 40 個主成分，減少雜訊並克服維度災難。
-2. **K-Means 市場分群**: 辨識「市場狀態 (Market Regimes)」，並將其作為特徵引導 KNN 尋找相似環境下的鄰居。
-3. **時序對齊**: 針對美股指數與 ADR 執行 `shift(1)`，嚴格杜絕資料洩漏 (Data Leakage)。
+* **PCA Dimensionality Reduction**: Projects the 117-dimensional feature space onto 40 orthogonal principal components to mitigate the "Curse of Dimensionality" and filter out redundant market noise.
+* **K-Means Market Regime Identification**: Employs unsupervised learning to identify distinct market regimes. [cite_start]These cluster labels are used as auxiliary features to guide the KNN model in identifying historical "neighbors" within structurally similar market environments [cite: 322-323, 602].
+* **Temporal Alignment**: Implements a `shift(1)` operation on U.S. indices and ADR data to strictly prevent data leakage, ensuring the model only uses information available at the time of trade.
 
-## 🛠️ 特徵工程 (Feature Engineering)
-程式實作了 `enhance_features` 函式，整合量價型態、RSI、MACD 及 1-10 日滯後項 (Lags)，共產出 117 維特徵。
+## 🛠️ Feature Engineering
+The module utilizes an `enhance_features` function to expand the raw dataset into a 117-dimensional space. This includes:
+* **Technical Indicators**: Discretized trend signals such as RSI overbought/oversold triggers and Moving Average crossovers.
+* **Global Interdependency**: Spillover effects from major U.S. indices (NASDAQ, S&P 500, DJI, SOX).
+* **Temporal Lags & Candlestick Patterns**: Price inertia over a 1-to-10 day lookback period and mathematical quantization of candlestick body/shadow ratios.
 
-## 🔄 執行工作流 (Execution Workflow) ⚠️ 重要
+## 🔄 Execution Workflow ⚠️ IMPORTANT
 
-為了生成 Stacking 所需的 Meta-features，必須採取「年份滾動式預測」，請遵循以下步驟：
+To generate the meta-features required for the Stacking Layer, a **Yearly Rolling Forecast** approach must be adopted:
 
-1. **產生年份切片 (Yearly Data Splitting)**:
-   - 根據目標年份，先產生對應的訓練與測試檔（例如：`2022_train.csv` 與 `2022_test.csv`） 。
-   - 確保測試集年份為該特定年份，訓練集則包含該年份以前的所有歷史數據。
+1.  **Yearly Data Splitting**:
+    * Generate specific training and testing files for the target year (e.g., `2022_train.csv` and `2022_test.csv`).
+    * The test set must contain only data from that specific year, while the training set includes all historical data prior to that year.
+2.  **Model Re-execution**:
+    * Point the training pipeline to the specific yearly slice and re-run the KNN training and prediction sequence.
+    * Export the result as a CSV file named `KNN_prediction_YYYY.csv`.
+3.  **Iteration**:
+    * Repeat the above process to produce individual prediction files for each year from **2020 to 2025**.
+4.  **Automated Merging**:
+    * Store all yearly files in the `data/results/KNN/` directory.
+    * Execute the merging script to aggregate all files into the final `KNN_prediction_all.csv` used for stacking.
 
-2. **重新執行模型 (Model Execution)**:
-   - 將訓練流水線指向該年份的切片，重新執行 KNN 模型訓練與預測程序。
-   - 輸出該年份的預測結果檔，命名格式為 `KNN_prediction_YYYY.csv`。
+## 📋 Output Format
+* **Date**: Trading date.
+* **Predict**: The predicted "probability of upward movement" (a value between 0 and 1).
+* **Purpose**: These probabilities serve as input features for the Meta-Learner to determine final decision weights.
 
-3. **重複週期 (Iteration)**:
-   - 重複上述步驟，逐一產出 **2020 年至 2025 年** 的各年度預測檔。
-
-4. **自動化合併 (Result Merging)**:
-   - 確保所有年份檔案皆存放在 `data/results/KNN/` 目錄下。
-   - 執行程式碼中的合併腳本，系統會自動抓取所有檔案並整合成最終的 `KNN_prediction_all.csv` 。
-
-## 📋 輸出格式說明
-* **Date**: 交易日期。
-* **Predict**: 模型輸出的上漲機率值 (Probability)，數值介於 0 與 1 之間。
-* **用途**: 此機率值將作為 Meta-Learner 的輸入特徵，用於最終決策權重分配 。
-
-## 📈 測試評估 (2025 Test Set)
+## 📈 Performance Evaluation (2025 Test Set)
 * **Accuracy**: 63.90%
 * **Macro F1**: 0.6390
 * **Recall (Down=0)**: 77.38%
