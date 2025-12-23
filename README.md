@@ -5,15 +5,6 @@ This project implements a robust machine learning pipeline to predict the price 
 
 ---
 
-## 🚪 Quick Navigation (傳送門)
-
-| Title    | Description |
-|  ----  | ----  |
-| [🔗 website](./website.md)  | 好的網站 |
-| [📁 Data](./data/)  | 模型資料之類檔案夾 |
-| [✅ CheckPoint](./checkpoint/) | Check Point |
----
-
 ## 🗂️ Project Structure
 
 The repository is organized into four core functional domains:
